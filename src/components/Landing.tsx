@@ -9,7 +9,6 @@ import "react-multi-carousel/lib/styles.css";
 import ScrollToTop from "./ScrollToTop";
 import Image from "next/image";
 import { Product } from "@/utils/types";
-import { Switch } from "@mui/material";
 import Link from "next/link";
 
 const Landing = () => {

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Fab } from "@mui/material";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 
 const ScrollToTop = () => {
-//   const [isVisible, setIsVisible] = useState(false);
+  //   const [isVisible, setIsVisible] = useState(false);
 
   return (
     <>

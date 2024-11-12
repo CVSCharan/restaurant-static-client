@@ -43,7 +43,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
 
   const fetchProducts = async () => {
     let uniqueCategories;
-    let duplicateCategories: string[] = [];
+    const duplicateCategories: string[] = [];
     try {
       const response = await axios.get<Product[]>(
         "http://localhost:8080/api/products/list"

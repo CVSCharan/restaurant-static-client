@@ -1,0 +1,136 @@
+.displayItemsMainContainer {
+  height: 100%;
+  width: 100%;
+  padding: 7px;
+}
+
+.productsLoaderContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productsLoader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #295f98 #295f98 transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.productsLoader::after,
+.productsLoader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #9b7ebd #9b7ebd;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+.productsLoader::before {
+  width: 32px;
+  height: 32px;
+  border-color: #295f98 #295f98 transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.displayProductsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.displayProductsCard {
+  height: 30%;
+  width: 30%;
+  border: 2px solid #9b7ebd;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.displayProductsCard:hover {
+  height: 33%;
+  width: 33%;
+  border: 2px solid #295f98;
+  background-color: black;
+}
+
+.displayProductsImg {
+  height: 70%;
+  width: 60%;
+  border-radius: 20px;
+}
+
+.displayProductsHeading {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.displayMenuCategoryModalContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContentContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.closeIconButton {
+  align-self: flex-end;
+  margin-right: 60px;
+  background-color: black;
+}

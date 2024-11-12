@@ -1,0 +1,153 @@
+.landingMainContainer {
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.landingProductsContainer {
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.landingBannerContainer {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.landingCarouselMainContainer {
+  height: 60%;
+  width: 100%;
+}
+
+.landingCarouselImg {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  border: 0;
+}
+
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #295f98; /* Bright red for visibility */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* High z-index to ensure visibility */
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuNavContainer {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 40px 0px;
+}
+
+.menuNavImg {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.menuNavItem {
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.menuSearchBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  height: 10%;
+  width: 100%;
+}
+
+.menuSearchBar {
+  height: 70%;
+  width: 80%;
+  border: 1px solid #9b7ebd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  gap: 25px;
+}
+
+.searchInput {
+  width: 75%;
+  height: 65%;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 20px;
+  background-color: #222a35;
+  color: white;
+  font-size: 16px;
+}
+
+.searchInput::placeholder {
+  color: #9b7ebd;
+}
+
+.searchBarClearBtn {
+  height: 55%;
+  width: 13%;
+  background-color: transparent;
+  border: 2px solid #222a35;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.searchBarClearBtn:hover {
+  border: 2px solid #9b7ebd;
+}
+
+.brandingContainer {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.landingLogo {
+  border: 2px solid #9b7ebd;
+  border-radius: 50%;
+  padding: 7px;
+}
+
+.landingBrand {
+  font-size: 22px;
+  color: #e5ad78;
+  font-weight: 400 !important;
+  text-decoration: none;
+  cursor: pointer;
+}

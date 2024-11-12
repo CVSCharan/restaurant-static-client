@@ -1,0 +1,148 @@
+/* Tablets (portrait and landscape) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .menuModalMainContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menuModalContainerOne {
+    height: 80%;
+    width: 90%;
+    background-color: #090917;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .menuModalHeading {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .menuModalDesc {
+    font-size: 16px;
+  }
+
+  .menuModalContainerOneSub {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .menuFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 7px;
+    height: 85%;
+    width: 95%;
+    border: 1.5px solid #295f98;
+    border-radius: 20px;
+    padding: 7px;
+  }
+
+  .menuFormContainerItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 97%;
+    height: 65%;
+  }
+
+  .menuFormContainerItem {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 40%;
+    height: 20%;
+  }
+
+  .menuFormContainerInput {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 45%;
+    width: 100%;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  .menuFormContainerLabel {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .menuCustomSelect {
+    height: 45%;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #090917;
+    color: white;
+    border: 1px solid white;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+
+  .menuAlertMsg {
+    height: 10%;
+    width: 50%;
+    background-color: transparent;
+    border: 2px solid;
+    font-size: 14px;
+    font-weight: 200;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+  }
+
+  .menuBtnContainer {
+    height: 10%;
+    width: 80%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .menuBtn {
+    height: 100%;
+    width: 20%;
+    background-color: transparent;
+    border: 2px solid #9b7ebd;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .menuBtn:hover {
+    background-color: black;
+    border: 2px solid #295f98;
+  }
+
+  .menuSnackbarHeading {
+    font-size: 16px;
+  }
+}

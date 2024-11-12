@@ -1,0 +1,167 @@
+.productsMainContainer {
+  height: 85%;
+  width: 97%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  background-color: #090917;
+  border: 0px;
+  border-radius: 20px;
+}
+
+.productsCard {
+  height: 40%;
+  width: 31%;
+  border: 2px solid #295f98;
+  border-radius: 20px;
+  list-style-type: none;
+}
+
+.productStylesContiner {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: auto;
+  gap: 20px 7px;
+  padding: 10px;
+}
+
+.productsCardImg {
+  height: 80%;
+  width: 45%;
+  border: 0px;
+  border-radius: 20px;
+}
+
+.productsCardContainerOne {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 57%;
+  width: 100%;
+  gap: 10px;
+  padding: 0px 5px;
+}
+
+.productsTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.productsCardContainerOneSubOne {
+  width: 48%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.productsCardContainerTwo {
+  padding: 7px 5px;
+  height: 40%;
+  width: 100%;
+}
+
+.productsDesc {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.isVegImg {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.productsLandingMainContainer {
+  min-height: 30vh;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  background-color: #090917;
+  margin: 40px 0px;
+}
+
+.productsLandingCard {
+  height: 240px;
+  width: 30%;
+  border: 2px solid #295f98;
+  border-radius: 20px;
+  list-style-type: none;
+}
+
+.productLandingStylesContiner {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px 42px;
+  padding: 10px;
+}
+
+.productsLandingCardImg {
+  height: 80%;
+  width: 45%;
+  border: 0px;
+  border-radius: 20px;
+}
+
+.productsLandingCardContainerOne {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 55%;
+  width: 100%;
+  gap: 10px;
+  padding: 0px 7px;
+}
+
+.productsLandingTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.productsLandingCardContainerOneSubOne {
+  width: 48%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.productsLandingCardContainerTwo {
+  padding: 7px 5px;
+  height: 40%;
+  width: 100%;
+}
+
+.productsLandingDesc {
+  padding: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.isVegImgLanding {
+  font-size: 12px;
+  font-weight: 500;
+}

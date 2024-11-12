@@ -10,6 +10,7 @@ import ScrollToTop from "./ScrollToTop";
 import Image from "next/image";
 import { Product } from "@/utils/types";
 import { Switch } from "@mui/material";
+import Link from "next/link";
 
 const Landing = () => {
   const { productsList, categoryList } = useProducts();
@@ -18,8 +19,8 @@ const Landing = () => {
     useState<Product[]>([]);
 
   const [isClient, setIsClient] = useState<boolean>(false);
-  const [isVegFilter, setIsVegFilter] = useState<boolean>(false);
-  const [isNonVegFilter, setIsNonVegFilter] = useState<boolean>(false);
+  // const [isVegFilter, setIsVegFilter] = useState<boolean>(false);
+  // const [isNonVegFilter, setIsNonVegFilter] = useState<boolean>(false);
 
   // Check if we are on the client side
   useEffect(() => {
@@ -57,19 +58,9 @@ const Landing = () => {
   };
 
   // Filter products based on the search query and switches
-  const filteredProductsList = productsList.filter((product) => {
-    const matchesSearchQuery = product.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesVegFilter = isVegFilter
-      ? product.category.toLowerCase() === "veg"
-      : true;
-    const matchesNonVegFilter = isNonVegFilter
-      ? product.category.toLowerCase() === "non-veg"
-      : true;
-
-    return matchesSearchQuery && matchesVegFilter && matchesNonVegFilter;
-  });
+  const filteredProductsList = productsList?.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleClearBtnClick = () => {
     setSearchQuery("");
@@ -119,12 +110,12 @@ const Landing = () => {
             priority // Use priority to load the image eagerly
           />
 
-          <a
+          <Link
             href="/"
             className={`playwrite-gb-s-text ${landingStyles.landingBrand}`}
           >
             Restaurant Name
-          </a>
+          </Link>
         </div>
       </div>
 

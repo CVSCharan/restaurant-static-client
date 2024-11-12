@@ -4,6 +4,7 @@ import menuStyles from "./menu.module.css";
 import AddMenuItem from "@/components/AddMenuItem";
 import AddMenuModal from "@/components/AddMenuModal";
 import DisplayMenuProducts from "@/components/DisplayMenuProducts";
+import Link from "next/link";
 
 const Products = () => {
   return (
@@ -16,12 +17,12 @@ const Products = () => {
           alt="ss-logo"
           src={process.env.RESTURANT_LOGO_URL as string}
         />
-        <a
+        <Link
           href="/"
           className={`playwrite-gb-s-text ${menuStyles.menuHeadingOne}`}
         >
           Restaurant Name
-        </a>
+        </Link>
       </div>
       <div className={menuStyles.menuContainerTwo}>
         <div className={menuStyles.menuContainerTwoSubOne}>

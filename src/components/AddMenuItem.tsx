@@ -5,7 +5,7 @@ import { Add as AddIcon } from "@mui/icons-material";
 import { useMenu } from "@/context/MenuContext";
 
 const AddMenuItem = () => {
-  const { addMenuModal, setAddMenuModal } = useMenu();
+  const { setAddMenuModal } = useMenu();
   return (
     <>
       <Fab

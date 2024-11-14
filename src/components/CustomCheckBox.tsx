@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Checkbox, { CheckboxProps } from "@mui/material/Checkbox";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BpIcon = styled("span")(({ theme }) => ({
   borderRadius: 3,
   width: 16,
@@ -30,7 +29,7 @@ const BpIcon = styled("span")(({ theme }) => ({
   },
 }));
 
-const BpCheckedIcon = styled(BpIcon)(({ theme }) => ({
+const BpCheckedIcon = styled(BpIcon)(() => ({
   backgroundColor: "#137cbd",
   "&::before": {
     display: "block",

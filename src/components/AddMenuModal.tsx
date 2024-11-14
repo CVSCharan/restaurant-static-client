@@ -43,7 +43,7 @@ const AddMenuModal = () => {
     if (!snackbarOpen) {
       setAddMenuModal(false);
     }
-  }, [snackbarOpen]);
+  }, [snackbarOpen, setAddMenuModal]);
 
   const handleClose = () => {
     setAddMenuModal(false);

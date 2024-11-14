@@ -8,6 +8,7 @@ import { Modal } from "@mui/material";
 import Products from "./Products";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
+import Image from "next/image";
 
 const DisplayMenuProducts = () => {
   const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -37,7 +38,7 @@ const DisplayMenuProducts = () => {
 
     loadProducts();
     console.log(productsList);
-  }, [productsList]);
+  }, [productsList, fetchProducts]);
 
   const onClickCategory = (category: string) => {
     console.log(category);
@@ -63,7 +64,9 @@ const DisplayMenuProducts = () => {
               className={displayMenu.displayProductsCard}
               key={index}
             >
-              <img
+              <Image
+                height={200}
+                width={200}
                 className={displayMenu.displayProductsImg}
                 src={item.imgUrl}
                 alt={`Category - ${item.name}`}

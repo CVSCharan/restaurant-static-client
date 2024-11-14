@@ -1,5 +1,5 @@
 /* Tablets (portrait and landscape) */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .menuModalMainContainer {
     height: 100%;
     width: 100%;

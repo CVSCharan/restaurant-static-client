@@ -1,23 +1,37 @@
+"use client";
 import { ProductsProps } from "@/utils/types";
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import productStyles from "../styles/Products.module.css";
+import { useProducts } from "@/context/ProductsContext";
 
 const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const pathname = usePathname();
+  const { isProductDescriptionChecked } = useProducts();
+
   useEffect(() => {
     console.log("Route Name:", pathname);
   }, [pathname]);
 
+  const sortedProducts = [...productValue].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  // Calculate Veg and Non-Veg counts
+  const vegCount = sortedProducts.filter((item) => item.is_veg === 0).length;
+  const nonVegCount = sortedProducts.filter((item) => item.is_veg !== 0).length;
+
   const renderAdminView = () => {
     return (
       <div className={productStyles.productsMainContainer}>
-        <h2 className={`josefin-sans-text ${productStyles.categoryHeading}`}>
-          {productValue[0]?.category}
+        <h2
+          className={`josefin-sans-text ${productStyles.productsCategoryHeading}`}
+        >
+          {sortedProducts[0]?.category}
         </h2>
         <ul className={productStyles.productStylesContiner}>
-          {productValue.map((item, index) => (
+          {sortedProducts.map((item, index) => (
             <li className={productStyles.productsCard} key={index}>
               <div className={productStyles.productsCardContainerOne}>
                 <Image
@@ -57,20 +71,44 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
 
   const renderLandingView = () => {
     return (
-      productValue.length !== 0 && (
+      sortedProducts.length !== 0 && (
         <div
-          id={`${productValue[0]?.category}`}
+          id={`${sortedProducts[0]?.category}`}
           className={productStyles.productsLandingMainContainer}
         >
           <h2
-            className={`josefin-sans-text ${productStyles.categoryLandingHeading}`}
+            className={`josefin-sans-text ${productStyles.productsCategoryHeading}`}
           >
-            {productValue[0]?.category}
+            {sortedProducts[0]?.category}
+          </h2>
+          <h2
+            className={`josefin-sans-text ${productStyles.productsCategoryHeading}`}
+          >
+            {vegCount !== 0 && nonVegCount !== 0
+              ? `🌱 : ${vegCount}   🍗 : ${nonVegCount}`
+              : vegCount !== 0 && nonVegCount === 0
+              ? `🌱 : ${vegCount}`
+              : vegCount === 0 && nonVegCount !== 0
+              ? `🍗 : ${nonVegCount}`
+              : `🌱 : ${vegCount}   🍗 : ${nonVegCount}`}
           </h2>
           <ul className={productStyles.productLandingStylesContiner}>
-            {productValue.map((item, index) => (
-              <li className={productStyles.productsLandingCard} key={index}>
-                <div className={productStyles.productsLandingCardContainerOne}>
+            {sortedProducts.map((item, index) => (
+              <li
+                className={
+                  isProductDescriptionChecked
+                    ? productStyles.productsLandingCardDesc
+                    : productStyles.productsLandingCard
+                }
+                key={index}
+              >
+                <div
+                  className={
+                    isProductDescriptionChecked
+                      ? productStyles.productsLandingCardContainerOneDesc
+                      : productStyles.productsLandingCardContainerOne
+                  }
+                >
                   <Image
                     width={220}
                     height={220}
@@ -100,13 +138,17 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                     </span>
                   </div>
                 </div>
-                <div className={productStyles.productsLandingCardContainerTwo}>
-                  <h3
-                    className={`quicksand-text ${productStyles.productsLandingDesc}`}
+                {isProductDescriptionChecked && (
+                  <div
+                    className={productStyles.productsLandingCardContainerTwo}
                   >
-                    {item.description}
-                  </h3>
-                </div>
+                    <h3
+                      className={`quicksand-text ${productStyles.productsLandingDesc}`}
+                    >
+                      {item.description}
+                    </h3>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -114,6 +156,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
       )
     );
   };
+
   return <>{pathname === "/" ? renderLandingView() : renderAdminView()}</>;
 };
 

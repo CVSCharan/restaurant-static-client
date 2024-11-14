@@ -18,6 +18,8 @@ interface ProductsContextType {
   setProductInc: React.Dispatch<React.SetStateAction<boolean>>;
   categoryList: string[];
   categoryObjectArr: CategoryList[];
+  isProductDescriptionChecked: boolean;
+  setIsProductDescriptionChecked: React.Dispatch<React.SetStateAction<boolean>>;
   fetchProducts: () => Promise<void>;
 }
 
@@ -40,22 +42,25 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
     []
   );
   const [productInc, setProductInc] = useState<boolean>(false);
+  const [isProductDescriptionChecked, setIsProductDescriptionChecked] =
+    useState<boolean>(false);
 
   const fetchProducts = async () => {
     let uniqueCategories;
     const duplicateCategories: string[] = [];
     try {
       const response = await axios.get<Product[]>(
-        "http://localhost:8080/api/products/list"
+        "https://restaurant-static-backend.onrender.com/api/products/list"
       );
       console.log("Products: ", response.data);
+
       setProductsList(response.data);
 
       response.data.forEach((item) => {
         duplicateCategories.push(item.category);
       });
       uniqueCategories = removeDuplicates(duplicateCategories);
-      setCategoryList(uniqueCategories);
+      setCategoryList(uniqueCategories.sort());
     } catch (err) {
       console.error("Error fetching products:", err);
     }
@@ -97,6 +102,8 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
         setProductInc,
         categoryList,
         categoryObjectArr,
+        isProductDescriptionChecked,
+        setIsProductDescriptionChecked,
         fetchProducts,
       }}
     >

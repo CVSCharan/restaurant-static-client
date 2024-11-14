@@ -31,7 +31,7 @@ const DisplayMenuProducts = () => {
         await fetchProducts(); // Call the fetchProducts function to get data
         setTimeout(() => {
           setShowLoader(false); // Hide the loader after 2 seconds
-        }, 1000);
+        }, 500);
       }
     };
 

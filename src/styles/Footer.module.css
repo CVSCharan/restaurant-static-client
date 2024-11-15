@@ -1,0 +1,311 @@
+.footerMainContainer {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+}
+
+.footerContainerOne {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerContainerTwo {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.footerContainerOneSubOne {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 25px;
+}
+
+.footerContainerOneSubTwo {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 20px;
+}
+
+.footerAddressHeading {
+  font-size: 22px;
+}
+
+.footerAddressTitle {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.footerAddress {
+  font-size: 16px;
+  margin: 7px 0;
+}
+
+.footerOpenHoursHeading {
+  font-size: 22px;
+}
+
+.footerOpenHours {
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.footerContactUsHeading {
+  font-size: 22px;
+}
+
+.contactUsFormContainer {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 20px;
+}
+
+.contactUsFormContainerSub {
+  height: 23%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 7px 0;
+}
+
+.contactUsFormLabel {
+  font-size: 15px;
+}
+
+.contactUsInput {
+  width: 100%;
+  height: 50%;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.contactUsSubmitBtm {
+  align-self: center;
+  height: 35px;
+  width: 120px;
+  margin: 10px 0;
+  background-color: black;
+  border: 1px solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Extra Small Mobile Devices (Portrait) */
+/* iPhone SE, older Android phones */
+@media only screen and (max-width: 320px) {
+  .footerMainContainer {
+    flex-direction: column;
+  }
+
+  .footerContainerOne {
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+  }
+
+  .footerContainerTwo {
+    width: 100%;
+    height: 55%;
+  }
+
+  .contactUsFormLabel {
+    font-size: 13px;
+  }
+
+  .footerAddressHeading {
+    font-size: 16px;
+  }
+
+  .footerAddressTitle {
+    font-size: 14px;
+  }
+
+  .footerAddress {
+    font-size: 13px;
+  }
+
+  .footerOpenHoursHeading {
+    font-size: 16px;
+  }
+
+  .footerOpenHours {
+    font-size: 14px;
+    margin: 20px 0;
+  }
+
+  .footerContactUsHeading {
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile Devices (Portrait) */
+/* iPhone 6/7/8, Galaxy S8 */
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  .footerMainContainer {
+    flex-direction: column;
+  }
+
+  .footerContainerOne {
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+  }
+
+  .footerContainerTwo {
+    width: 100%;
+    height: 55%;
+  }
+
+  .contactUsFormLabel {
+    font-size: 13px;
+  }
+
+  .footerAddressHeading {
+    font-size: 18px;
+  }
+
+  .footerAddressTitle {
+    font-size: 14px;
+  }
+
+  .footerAddress {
+    font-size: 13px;
+  }
+
+  .footerOpenHoursHeading {
+    font-size: 18px;
+  }
+
+  .footerOpenHours {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  .footerContactUsHeading {
+    font-size: 18px;
+  }
+}
+
+/* Medium Mobile Devices (Portrait) */
+/* iPhone 11 Pro, Google Pixel 2 */
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  .footerMainContainer {
+    flex-direction: column;
+  }
+
+  .footerContainerOne {
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+  }
+
+  .footerContainerTwo {
+    width: 100%;
+    height: 55%;
+  }
+
+  .contactUsFormLabel {
+    font-size: 13px;
+  }
+
+  .footerAddressHeading {
+    font-size: 18px;
+  }
+
+  .footerAddressTitle {
+    font-size: 14px;
+  }
+
+  .footerAddress {
+    font-size: 13px;
+  }
+
+  .footerOpenHoursHeading {
+    font-size: 18px;
+  }
+
+  .footerOpenHours {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  .footerContactUsHeading {
+    font-size: 18px;
+  }
+}
+
+/* Large Mobile Devices (Portrait) */
+/* iPhone 11 Pro Max, Galaxy Note */
+@media only screen and (min-width: 426px) and (max-width: 480px) {
+  .footerMainContainer {
+    flex-direction: column;
+  }
+
+  .footerContainerOne {
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+  }
+
+  .footerContainerTwo {
+    width: 100%;
+    height: 55%;
+  }
+
+  .contactUsFormLabel {
+    font-size: 13px;
+  }
+
+  .footerAddressHeading {
+    font-size: 18px;
+  }
+
+  .footerAddressTitle {
+    font-size: 14px;
+  }
+
+  .footerAddress {
+    font-size: 13px;
+  }
+
+  .footerOpenHoursHeading {
+    font-size: 18px;
+  }
+
+  .footerOpenHours {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  .footerContactUsHeading {
+    font-size: 18px;
+  }
+}

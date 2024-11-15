@@ -13,6 +13,7 @@ import Link from "next/link";
 import VegNonVegSwitch from "./CustomSwitch";
 import CustomizedCheckbox from "./CustomCheckBox";
 import Footer from "./Footer";
+import { Divider } from "@mui/material";
 
 const Landing = () => {
   const {
@@ -248,9 +249,18 @@ const Landing = () => {
             ))}
         </div>
 
-        <div style={{ height: "50vh" }}>
+        <section className={landingStyles.footerContainer}>
           <Footer />
-        </div>
+          <Divider className={landingStyles.customDivider} />
+          <div className={landingStyles.copyRightsContainer}>
+            <h2
+              className={`josefin-sans-text ${landingStyles.copyRightsHeading}`}
+            >
+              © 2024 - 2025 Restaurant Application Pvt. Ltd. Made with 💗 by CVS
+              CHARAN
+            </h2>
+          </div>
+        </section>
       </div>
     </section>
   );

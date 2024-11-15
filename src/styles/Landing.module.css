@@ -11,6 +11,10 @@
   height: auto;
   width: 100%;
   padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .landingBannerContainer {
@@ -207,10 +211,26 @@
 }
 
 .footerContainer {
-  height: 10vh;
-  min-height: 60px;
+  height: 60vh;
   width: 100%;
   position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #1a1a2e, #0b0c10);
+}
+
+.customDivider {
+  border-color: white;
+  width: 100%;
+}
+
+.copyRightsHeading {
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
 }
 
 /* Extra Small Mobile Devices (Portrait) */
@@ -297,6 +317,14 @@
 
   .landingFiltersSwitchLabel {
     font-size: 10px;
+  }
+
+  .footerContainer {
+    height: 100vh;
+  }
+
+  .copyRightsHeading {
+    font-size: 14px;
   }
 }
 
@@ -385,6 +413,14 @@
   .landingFiltersSwitchLabel {
     font-size: 10px;
   }
+
+  .footerContainer {
+    height: 100vh;
+  }
+
+  .copyRightsHeading {
+    font-size: 14px;
+  }
 }
 
 /* Medium Mobile Devices (Portrait) */
@@ -472,6 +508,14 @@
   .landingFiltersSwitchLabel {
     font-size: 10px;
   }
+
+  .footerContainer {
+    height: 100vh;
+  }
+
+  .copyRightsHeading {
+    font-size: 14px;
+  }
 }
 
 /* Large Mobile Devices (Portrait) */
@@ -558,6 +602,14 @@
 
   .landingFiltersSwitchLabel {
     font-size: 10px;
+  }
+
+  .footerContainer {
+    height: 100vh;
+  }
+
+  .copyRightsHeading {
+    font-size: 14px;
   }
 }
 

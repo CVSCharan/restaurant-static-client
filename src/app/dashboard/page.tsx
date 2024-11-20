@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation"; // Use `next/navigation` in the app
 import Link from "next/link";
 
 const Dashboard = () => {
-  const [userToken, setUserToken] = useState("");
   const router = useRouter();
 
   useEffect(() => {

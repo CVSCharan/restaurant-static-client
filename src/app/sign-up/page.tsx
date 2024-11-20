@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import signUpStyles from "./page.module.css";
 import axios from "axios";
 import Image from "next/image";
@@ -38,6 +38,7 @@ const SignUpPage: React.FC = () => {
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log(error, success);
     e.preventDefault();
     setError("");
     setSuccess("");

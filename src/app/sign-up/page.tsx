@@ -82,10 +82,12 @@ const SignUpPage: React.FC = () => {
           password: "",
           role: "manager",
         });
-      } catch (err: any) {
-        setError(
-          err.response?.data?.error || "Failed to sign up. Please try again."
-        );
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          setError(
+            err.response?.data?.error || "Failed to sign up. Please try again."
+          );
+        }
       }
     }
   };

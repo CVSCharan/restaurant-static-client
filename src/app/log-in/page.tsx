@@ -1,5 +1,5 @@
 "use client";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import logInStyles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -52,9 +52,11 @@ const LogInPage: React.FC = () => {
           console.log("Login failed:", response.data);
           alert("Login failed. Please check your credentials.");
         }
-      } catch (error: any) {
-        console.error("Error logging in:", error);
-        alert(error.response?.data || "Error logging in. Please try again.");
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          console.error("Error logging in:", error);
+          alert(error.response?.data || "Error logging in. Please try again.");
+        }
       }
     }
   };

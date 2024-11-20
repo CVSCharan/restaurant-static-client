@@ -1,0 +1,110 @@
+.logInMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  gap: 50px;
+}
+
+.logInBrandingContainer {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.logInBrand {
+  font-size: 22px;
+  color: #e5ad78;
+  font-weight: 400 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logInLogo {
+  border: 2px solid #9b7ebd;
+  border-radius: 50%;
+  padding: 7px;
+  height: 70px;
+  width: 70px;
+}
+
+.logInContainer {
+  width: 50%;
+  height: 45%;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2.5px solid #295f98;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logInForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.logInLabel {
+  margin-bottom: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.logInInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #9b7ebd;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+.forgotPassword {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  margin: 0 10px 20px 0;
+  align-self: flex-end;
+}
+
+.forgotPassword:hover {
+  color: #0056b3;
+}
+
+.submitBtn {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3;
+}

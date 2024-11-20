@@ -16,7 +16,7 @@
   align-items: center;
   gap: 5px;
   height: 15%;
-  width: 40%;
+  width: 80%;
 }
 
 .menuHeadingOne {
@@ -44,6 +44,7 @@
   gap: 3px;
   border: 2px solid #295f98;
   border-radius: 20px;
+  max-width: 1280px;
 }
 
 .menuHeadingTwo {
@@ -72,16 +73,134 @@
   justify-content: center;
   align-items: center;
 }
+
+/* Extra Small Mobile Devices (Portrait) */
+/* iPhone SE, older Android phones */
+@media only screen and (max-width: 320px) {
+  .menuHeadingOne {
+    font-size: 16px;
+  }
+
+  .menuLogo {
+    height: 60px;
+    width: 60px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile Devices (Portrait) */
+/* iPhone 6/7/8, Galaxy S8 */
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  .menuHeadingOne {
+    font-size: 18px;
+  }
+
+  .menuLogo {
+    height: 70px;
+    width: 70px;
+  }
+  .menuHeadingTwo {
+    font-size: 15px;
+  }
+}
+
+/* Medium Mobile Devices (Portrait) */
+/* iPhone 11 Pro, Google Pixel 2 */
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  .menuHeadingOne {
+    font-size: 18px;
+  }
+
+  .menuLogo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 15px;
+  }
+}
+
+/* Large Mobile Devices (Portrait) */
+/* iPhone 11 Pro Max, Galaxy Note */
+@media only screen and (min-width: 426px) and (max-width: 480px) {
+  .menuHeadingOne {
+    font-size: 18px;
+  }
+
+  .menuLogo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 20px;
+  }
+}
+
 /* Tablets (portrait and landscape) */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .menuHeadingOne {
+    font-size: 20px;
+  }
+
+  .menuLogo {
+    height: 80px;
+    width: 80px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 18px;
+  }
+}
+
+/* Styles for smaller desktops */
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .menuHeadingOne {
+    font-size: 20px;
+  }
+
+  .menuLogo {
+    height: 80px;
+    width: 80px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 18px;
+  }
 }
 
 /* Standard desktops and larger laptops (1281px to 1600px) */
-@media (min-width: 1281px) and (max-width: 1600px) {
+@media only screen and (min-width: 1281px) and (max-width: 1600px) {
+  .menuHeadingOne {
+    font-size: 22px;
+  }
 
+  .menuLogo {
+    height: 90px;
+    width: 90px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 20px;
+  }
 }
 
 /* Ultra-wide screens (2560px and above) */
-@media (min-width: 2560px) {
- 
+@media only screen and (min-width: 2560px) {
+  .menuHeadingOne {
+    font-size: 26px;
+  }
+
+  .menuLogo {
+    height: 120px;
+    width: 120px;
+  }
+
+  .menuHeadingTwo {
+    font-size: 22px;
+  }
 }

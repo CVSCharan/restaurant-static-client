@@ -30,6 +30,17 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
         >
           {sortedProducts[0]?.category}
         </h2>
+        <h2
+          className={`josefin-sans-text ${productStyles.productsCategoryHeading}`}
+        >
+          {vegCount !== 0 && nonVegCount !== 0
+            ? `🌱 : ${vegCount}   🍗 : ${nonVegCount}`
+            : vegCount !== 0 && nonVegCount === 0
+            ? `🌱 : ${vegCount}`
+            : vegCount === 0 && nonVegCount !== 0
+            ? `🍗 : ${nonVegCount}`
+            : `🌱 : ${vegCount}   🍗 : ${nonVegCount}`}
+        </h2>
         <ul className={productStyles.productStylesContiner}>
           {sortedProducts.map((item, index) => (
             <li className={productStyles.productsCard} key={index}>

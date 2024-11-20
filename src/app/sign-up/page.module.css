@@ -1,0 +1,128 @@
+.signUpMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  gap: 50px;
+}
+
+.signUpContainer {
+  height: 70%;
+  width: 70%;
+  max-width: 1280px;
+  padding: 20px 40px;
+  border: 2.5px solid #295f98;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.signUpBrandingContainer {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.signUpBrand {
+  font-size: 22px;
+  color: #e5ad78;
+  font-weight: 400 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signUpLogo {
+  border: 2px solid #9b7ebd;
+  border-radius: 50%;
+  padding: 7px;
+  height: 70px;
+  width: 70px;
+}
+
+.signUpForm {
+  height: 95%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.signUpFormGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 20%;
+}
+
+.signUpLabel {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.errorMsg {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 14px;
+  color: #555;
+}
+
+.signUpInput {
+  width: 100%;
+  height: 50%;
+  padding: 8px;
+  font-size: 14px;
+  border: 2px solid #9b7ebd;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+.signUpSelect {
+  width: 100%;
+  height: 50%;
+  padding: 7px 20px;
+  font-size: 14px;
+  border: 2px solid #9b7ebd;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+.errorMsg {
+  color: #d32f2f;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.successMsg {
+  color: #388e3c;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.submitBtn {
+  align-self: center;
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 20px 0;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3;
+}

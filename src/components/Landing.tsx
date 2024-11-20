@@ -256,7 +256,7 @@ const Landing = () => {
             <h2
               className={`josefin-sans-text ${landingStyles.copyRightsHeading}`}
             >
-              © 2024 - 2025 Restaurant Application Pvt. Ltd. Made with 💗 by CVS
+              © 2024 - 2025 Restaurant Pvt. Ltd. Made with 💗 by CVS
               CHARAN
             </h2>
           </div>

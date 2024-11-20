@@ -8,6 +8,7 @@
   gap: 25px;
   background-color: #090917;
   border: 0px;
+  max-width: 1280px;
   border-radius: 20px;
 }
 
@@ -17,8 +18,8 @@
 }
 
 .productsCard {
-  height: 40%;
-  width: 31%;
+  height: 37%;
+  width: 27%;
   border: 2px solid #295f98;
   border-radius: 20px;
   list-style-type: none;
@@ -33,13 +34,13 @@
   justify-content: space-evenly;
   align-items: center;
   overflow-y: auto;
-  gap: 20px 7px;
+  gap: 20px 3px;
   padding: 10px;
 }
 
 .productsCardImg {
-  height: 80%;
-  width: 45%;
+  height: 70%;
+  width: 40%;
   border: 0px;
   border-radius: 20px;
 }
@@ -49,7 +50,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 57%;
+  height: 52%;
   width: 100%;
   gap: 10px;
   padding: 0px 5px;
@@ -72,7 +73,7 @@
 
 .productsCardContainerTwo {
   padding: 7px 5px;
-  height: 40%;
+  height: 48%;
   width: 100%;
 }
 
@@ -80,6 +81,7 @@
   font-size: 12px;
   font-weight: 500;
   text-align: left;
+  padding: 10px;
 }
 
 .isVegImg {
@@ -100,20 +102,36 @@
   max-width: 1280px;
 }
 
-.productsLandingCard {
+/* .productsLandingCard {
   height: 155px;
   width: 32%;
   border: 3px solid #295f98;
   border-radius: 20px;
   list-style-type: none;
+} */
+
+.productsLandingCard {
+  height: 155px;
+  width: 32%;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  border-radius: 20px;
+  list-style-type: none;
+  background: linear-gradient(145deg, #1a1a1d, #222229); /* Slight gradient for depth */
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.8), /* Bottom-right shadow */
+    -4px -4px 8px rgba(255, 255, 255, 0.1); /* Top-left highlight */
 }
 
 .productsLandingCardDesc {
   height: 290px;
   width: 32%;
-  border: 3px solid #295f98;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
   border-radius: 20px;
   list-style-type: none;
+  background: linear-gradient(145deg, #1a1a1d, #222229); /* Slight gradient for depth */
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.8), /* Bottom-right shadow */
+    -4px -4px 8px rgba(255, 255, 255, 0.1); /* Top-left highlight */
 }
 
 .productLandingStylesContiner {
@@ -196,6 +214,11 @@
 /* Extra Small Mobile Devices (Portrait) */
 /* iPhone SE, older Android phones */
 @media only screen and (max-width: 320px) {
+  .productsCard {
+    height: 50%;
+    width: 85%;
+  }
+
   .productLandingStylesContiner {
     justify-content: center;
     gap: 20px;
@@ -249,6 +272,11 @@
 /* Small Mobile Devices (Portrait) */
 /* iPhone 6/7/8, Galaxy S8 */
 @media only screen and (min-width: 321px) and (max-width: 375px) {
+  .productsCard {
+    height: 50%;
+    width: 85%;
+  }
+
   .productLandingStylesContiner {
     justify-content: center;
     gap: 20px;
@@ -302,6 +330,11 @@
 /* Medium Mobile Devices (Portrait) */
 /* iPhone 11 Pro, Google Pixel 2 */
 @media only screen and (min-width: 376px) and (max-width: 425px) {
+  .productsCard {
+    height: 50%;
+    width: 85%;
+  }
+
   .productLandingStylesContiner {
     justify-content: center;
     gap: 20px;
@@ -355,6 +388,11 @@
 /* Large Mobile Devices (Portrait) */
 /* iPhone 11 Pro Max, Galaxy Note */
 @media only screen and (min-width: 426px) and (max-width: 480px) {
+  .productsCard {
+    height: 50%;
+    width: 85%;
+  }
+
   .productLandingStylesContiner {
     justify-content: center;
     gap: 20px;
@@ -406,7 +444,12 @@
 }
 
 /* Tablets (portrait and landscape) */
-@media (min-width: 769px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .productsCard {
+    height: 50%;
+    width: 32%;
+  }
+
   .productsLandingMainContainer {
     margin: 100px 0px;
     gap: 40px;
@@ -453,7 +496,15 @@
 }
 
 /* Styles for smaller desktops */
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .productsCard {
+    height: 45%;
+  }
+
+  .productsDesc {
+    font-size: 11.5px;
+  }
+
   .productsLandingMainContainer {
     margin: 100px 0px;
     gap: 40px;
@@ -500,7 +551,7 @@
 }
 
 /* Standard desktops and larger laptops (1281px to 1600px) */
-@media (min-width: 1281px) and (max-width: 1600px) {
+@media only screen and (min-width: 1281px) and (max-width: 1600px) {
   .productsLandingMainContainer {
     margin: 100px 0px;
     gap: 40px;
@@ -547,7 +598,7 @@
 }
 
 /* Ultra-wide screens (2560px and above) */
-@media (min-width: 2560px) {
+@media only screen and (min-width: 2560px) {
   .productsLandingMainContainer {
     margin: 100px 0px;
     gap: 40px;
@@ -555,20 +606,20 @@
 
   .productsLandingCard {
     height: 250px;
-    width: 23%;
+    width: 33%;
     border: 5px solid #295f98;
     border-radius: 40px;
   }
 
   .productsLandingCardDesc {
     height: 420px;
-    width: 23%;
+    width: 33%;
     border: 5px solid #295f98;
     border-radius: 40px;
   }
 
   .productLandingStylesContiner {
-    gap: 40px 2.57%;
+    gap: 40px 0.5%;
   }
 
   .productsCategoryHeading {

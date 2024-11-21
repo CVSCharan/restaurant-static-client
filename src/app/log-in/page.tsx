@@ -31,7 +31,7 @@ const LogInPage: React.FC = () => {
       try {
         // Send a POST request with username and password
         const response = await axios.post(
-          "http://localhost:8080/api/auth/log-in",
+          "https://restaurant-static-backend.onrender.com/api/auth/log-in",
           {
             username,
             password,

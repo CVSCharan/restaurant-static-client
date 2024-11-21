@@ -14,6 +14,7 @@ import VegNonVegSwitch from "./CustomSwitch";
 import CustomizedCheckbox from "./CustomCheckBox";
 import Footer from "./Footer";
 import { Divider } from "@mui/material";
+import Fuse from "fuse.js";
 
 const Landing = () => {
   const {
@@ -43,7 +44,6 @@ const Landing = () => {
     }
   }, [isClient, productsList]);
 
-  // Filter and search logic combined in a single useEffect
   useEffect(() => {
     let filteredList = productsList;
 
@@ -54,11 +54,33 @@ const Landing = () => {
       filteredList = filteredList.filter((item) => item.is_veg !== 0);
     }
 
-    // Apply search query filter
+    // Handle search query
     if (searchQuery.trim() !== "") {
-      filteredList = filteredList.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      const fuse = new Fuse(filteredList, {
+        keys: ["name", "category"], // Search in both 'name' and 'category'
+        threshold: 0.4, // Tolerance for fuzzy matching
+      });
+
+      const searchResults = fuse
+        .search(searchQuery)
+        .map((result) => result.item);
+
+      if (searchResults.length > 0) {
+        filteredList = searchResults;
+      } else {
+        // No matches found; fallback to similar category with a broader threshold
+        const broaderFuse = new Fuse(filteredList, {
+          keys: ["category"], // Search only in 'category' as a last resort
+          threshold: 0.6, // Looser tolerance for broader matches
+        });
+
+        const categoryResults = broaderFuse
+          .search(searchQuery)
+          .map((result) => result.item);
+
+        filteredList =
+          categoryResults.length > 0 ? categoryResults : productsList;
+      }
     }
 
     // Update the filtered products list
@@ -256,8 +278,7 @@ const Landing = () => {
             <h2
               className={`josefin-sans-text ${landingStyles.copyRightsHeading}`}
             >
-              © 2024 - 2025 Restaurant Pvt. Ltd. Made with 💗 by CVS
-              CHARAN
+              © 2024 - 2025 Restaurant Pvt. Ltd. Made with 💗 by CVS CHARAN
             </h2>
           </div>
         </section>

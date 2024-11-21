@@ -50,7 +50,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
     const duplicateCategories: string[] = [];
     try {
       const response = await axios.get<Product[]>(
-        "https://restaurant-static-backend.onrender.com/api/products/list"
+        "http://localhost:8080/api/products/list"
       );
       console.log("Products: ", response.data);
       setProductsList(response.data);

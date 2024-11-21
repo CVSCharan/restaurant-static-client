@@ -3,16 +3,21 @@ import React, { useState, useRef } from "react";
 
 const QRCodeComponent = () => {
   const [text, setText] = useState("");
-  const qrCodeRef = useRef();
+  const qrCodeRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
-    const canvas = qrCodeRef.current.querySelector("canvas");
-    if (canvas) {
-      const image = canvas.toDataURL("image/png"); // Get QR code as base64 PNG
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = "qr-code.png"; // File name for the download
-      link.click();
+    if (qrCodeRef.current !== null) {
+      // Explicitly check for null
+      const canvas = qrCodeRef.current.querySelector("canvas");
+      if (canvas) {
+        const image = canvas.toDataURL("image/png"); // Convert canvas to PNG base64
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "qr-code.png"; // Download file as "qr-code.png"
+        link.click();
+      } else {
+        console.error("Canvas element not found in QRCode component.");
+      }
     } else {
       console.error("No canvas element found in QR code component.");
     }

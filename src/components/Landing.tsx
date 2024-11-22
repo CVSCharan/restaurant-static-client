@@ -35,7 +35,7 @@ const Landing = () => {
       } catch (error) {
         console.error("Error keeping server alive:", error);
       }
-    }, 5 * 60 * 1000); // Poll every 5 minutes
+    }, 1 * 60 * 1000); // Poll every 5 minutes
   };
 
   useEffect(() => {

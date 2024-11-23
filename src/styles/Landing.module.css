@@ -18,13 +18,16 @@
 }
 
 .landingBannerContainer {
-  height: 40vh;
+  height: 45vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  background-color: rgba(204, 204, 204, 0.1);
+  border-bottom-left-radius: 50% 25%; /* Horizontal and vertical radii */
+  border-bottom-right-radius: 50% 25%;
 }
 
 .landingCarouselMainContainer {
@@ -138,7 +141,7 @@
 }
 
 .brandingContainer {
-  height: 30%;
+  height: 40%;
   width: 100%;
   display: flex;
   flex-direction: column;

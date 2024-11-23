@@ -6,7 +6,7 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { BASE_URL } from "@/utils/apis";
-import { useAuth } from "@/context/AuthContext";
+// import { useAuth } from "@/context/AuthContext";
 import { RestaurantUser } from "@/utils/types";
 
 const LogInPage: React.FC = () => {
@@ -15,7 +15,7 @@ const LogInPage: React.FC = () => {
 
   const router = useRouter();
 
-  const { setUser } = useAuth();
+  // const { setUser } = useAuth();
 
   // Handler for input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

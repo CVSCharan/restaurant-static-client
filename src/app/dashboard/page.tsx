@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation"; // Use `next/navigation` in the app directory
 import Link from "next/link";
 import dashboardStyles from "./page.module.css";

@@ -17,3 +17,10 @@ export interface CategoryList {
   name: string;
   imgUrl: string;
 }
+export interface RestaurantUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  token?: string;
+}

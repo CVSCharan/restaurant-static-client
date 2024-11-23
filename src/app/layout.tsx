@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MenuProvider } from "@/context/MenuContext";
 import "./globals.css";
 import { ProductsProvider } from "@/context/ProductsContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Restaurant Application",
@@ -15,13 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MenuProvider>
-        <ProductsProvider>
-          <body>
-            {children}
-          </body>
-        </ProductsProvider>
-      </MenuProvider>
+      <AuthProvider>
+        <MenuProvider>
+          <ProductsProvider>
+            <body>{children}</body>
+          </ProductsProvider>
+        </MenuProvider>
+      </AuthProvider>
     </html>
   );
 }

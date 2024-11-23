@@ -15,7 +15,6 @@ import CustomizedCheckbox from "./CustomCheckBox";
 import Footer from "./Footer";
 import { Divider } from "@mui/material";
 import Fuse from "fuse.js";
-import axios from "axios";
 
 const Landing = () => {
   const {
@@ -24,23 +23,6 @@ const Landing = () => {
     isProductDescriptionChecked,
     setIsProductDescriptionChecked,
   } = useProducts();
-
-  const SERVER_URL = "https://restaurant-static-backend.onrender.com/api/ping"; // Replace with your server URL
-
-  const keepServerAlive = () => {
-    setInterval(async () => {
-      try {
-        const response = await axios.get(SERVER_URL);
-        console.log("Server is active:", response.status);
-      } catch (error) {
-        console.error("Error keeping server alive:", error);
-      }
-    }, 1 * 60 * 1000); // Poll every 5 minutes
-  };
-
-  useEffect(() => {
-    keepServerAlive();
-  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [landingSearchedProductsList, setLandingSearchedProductsList] =

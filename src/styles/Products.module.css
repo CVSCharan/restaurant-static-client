@@ -155,7 +155,7 @@
 
 .productsLandingCardContainerOne {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   height: 95%;
@@ -166,7 +166,7 @@
 
 .productsLandingCardContainerOneDesc {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   height: 55%;
@@ -231,14 +231,14 @@
 
   .productsLandingCard {
     height: 200px;
-    width: 90%;
+    width: 95%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }
 
   .productsLandingCardDesc {
     height: 330px;
-    width: 90%;
+    width: 95%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }
@@ -289,14 +289,14 @@
 
   .productsLandingCard {
     height: 200px;
-    width: 80%;
+    width: 90%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }
 
   .productsLandingCardDesc {
     height: 330px;
-    width: 80%;
+    width: 90%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }
@@ -347,14 +347,14 @@
 
   .productsLandingCard {
     height: 200px;
-    width: 80%;
+    width: 90%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }
 
   .productsLandingCardDesc {
     height: 330px;
-    width: 80%;
+    width: 90%;
     border: 3px solid #295f98;
     border-radius: 40px;
   }

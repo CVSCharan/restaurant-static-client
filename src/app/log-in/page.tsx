@@ -5,12 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { BASE_URL } from "@/utils/apis";
+import { useAuth } from "@/context/AuthContext";
+import { RestaurantUser } from "@/utils/types";
 
 const LogInPage: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
+
+  const { setUser } = useAuth();
 
   // Handler for input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,28 +29,30 @@ const LogInPage: React.FC = () => {
     e.preventDefault();
 
     console.log("Username:", username);
-    console.log("Password:", password);
 
     // Check if username and password are not empty
     if (username !== "" && password !== "") {
       try {
         // Send a POST request with username and password
-        const response = await axios.post(
-          "https://restaurant-static-backend.onrender.com/api/auth/log-in",
-          {
-            username,
-            password,
-          }
-        );
+        const response = await axios.post(`${BASE_URL}/auth/log-in`, {
+          username,
+          password,
+        });
 
         // Check if the response is successful
         if (response.status === 200) {
           console.log("Login successful:", response.data);
 
-          const { token } = response.data;
+          const { token, id, username, role, email } = response.data;
+          const tempUser: RestaurantUser = {
+            id,
+            name: username,
+            email,
+            role,
+            token,
+          };
           // Store the token in localStorage (or cookie)
-          localStorage.setItem("restaurant-app-token", token);
-
+          localStorage.setItem("restaurant-app-user", JSON.stringify(tempUser));
           // You can redirect or update the UI here on success
           router.push("/dashboard");
         } else {

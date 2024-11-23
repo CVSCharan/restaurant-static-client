@@ -1,33 +1,91 @@
 "use client";
-import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation"; // Use `next/navigation` in the app directory
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; // Use `next/navigation` in the app directory
 import Link from "next/link";
-import QRCodeGenerator from "@/components/QRCodeGenerator";
+import dashboardStyles from "./page.module.css";
+import { useAuth } from "@/context/AuthContext";
+import Image from "next/image";
+import TabsComp from "@/components/TabsComponent";
 
 const Dashboard = () => {
   const router = useRouter();
 
-  const pathname = usePathname();
-  useEffect(() => {
-    console.log("Route Name:", pathname);
-    if (pathname !== "/dashboard") {
-      localStorage.removeItem("restaurant-app-token");
-    }
-  }, [pathname]);
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem("restaurant-app-token");
-    console.log(token);
-
-    if (!token) {
-      router.push("/log-in"); // Redirect to login if token is absent
+    const storedUser = localStorage.getItem("restaurant-app-user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser); // Safely parse the string
+        console.log(parsedUser);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error("Error parsing stored user:", error);
+      }
+    } else {
+      router.push("/log-in"); // Redirect to login if user is absent
     }
-  }, [router]); // Add router as a dependency to useEffect
+  }, []);
+
+  const renderAdminView = () => {
+    return (
+      <div className={dashboardStyles.adminMainContainer}>
+        <div
+          style={{
+            backgroundImage:
+              "url(https://raw.githubusercontent.com/CVSCharan/resturant-app-assets/refs/heads/main/restaurant-stock-img-2.jpg)",
+          }}
+          className={dashboardStyles.adminBannerContainer}
+        >
+          <div className={dashboardStyles.dashboardBrandingContainer}>
+            <Image
+              width={200}
+              height={200}
+              className={dashboardStyles.dashboardLogo}
+              alt="ss-logo"
+              src="https://raw.githubusercontent.com/CVSCharan/resturant-app-assets/refs/heads/main/restaurant-logo-img.png"
+              priority // Use priority to load the image eagerly
+            />
+
+            <Link
+              href="/"
+              className={`playwrite-gb-s-text ${dashboardStyles.dashboardBrand}`}
+            >
+              Restaurant Name
+            </Link>
+          </div>
+        </div>
+        <div className={dashboardStyles.adminDashboardContainer}>
+          <h2>Welcome Admin!</h2>
+          <div className={dashboardStyles.dashboardTabsContainer}>
+            <TabsComp value={value} handleChange={handleChange} />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderManagerView = () => {
+    return <div>Manager View</div>;
+  };
+
+  const renderAccessDeninedView = () => {
+    return <div>Access Denied</div>;
+  };
 
   return (
-    <section id="Dashboard" className="dashboard-main-container">
-      <Link href="/sign-up">Add New User</Link>
-      <QRCodeGenerator />
+    <section id="Dashboard" className={dashboardStyles.dashboardMainContainer}>
+      {user && user?.role === "admin"
+        ? renderAdminView()
+        : user?.role === "manager"
+        ? renderManagerView()
+        : renderAccessDeninedView()}
     </section>
   );
 };

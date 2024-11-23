@@ -9,6 +9,8 @@ import React, {
 import axios from "axios";
 import { CategoryList, Product } from "@/utils/types";
 import { removeDuplicates } from "@/utils/helpers";
+import { BASE_URL } from "@/utils/apis";
+import { usePathname } from "next/navigation";
 
 // Define the context state type
 interface ProductsContextType {
@@ -45,13 +47,19 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
   const [isProductDescriptionChecked, setIsProductDescriptionChecked] =
     useState<boolean>(false);
 
+  const pathname = usePathname();
+  useEffect(() => {
+    console.log("Route Name:", pathname);
+    if (pathname !== "/dashboard") {
+      localStorage.removeItem("restaurant-app-token");
+    }
+  }, [pathname]);
+
   const fetchProducts = async () => {
     let uniqueCategories;
     const duplicateCategories: string[] = [];
     try {
-      const response = await axios.get<Product[]>(
-        "https://restaurant-static-backend.onrender.com/api/products/list"
-      );
+      const response = await axios.get<Product[]>(`${BASE_URL}/products/list`);
       console.log("Products: ", response.data);
       setProductsList(response.data);
 

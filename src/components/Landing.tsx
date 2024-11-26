@@ -6,7 +6,7 @@ import { filterProductsList, resturantStockImages } from "@/utils/helpers";
 import landingStyles from "../styles/Landing.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ScrollToTop from "./ScrollToTop";
+// import ScrollToTop from "./ScrollToTop";
 import Image from "next/image";
 import { Product } from "@/utils/types";
 import Link from "next/link";
@@ -15,6 +15,7 @@ import VegNonVegSwitch from "./CustomSwitch";
 import Footer from "./Footer";
 import { Divider } from "@mui/material";
 import Fuse from "fuse.js";
+import MenuComponent from "./MenuComponent";
 
 const Landing = () => {
   const {
@@ -126,7 +127,8 @@ const Landing = () => {
   return (
     <section id="Landing" className={landingStyles.landingMainContainer}>
       <div style={{ flex: 1 }}>
-        <ScrollToTop />
+        <MenuComponent />
+        {/* <ScrollToTop /> */}
         <div className={landingStyles.landingBannerContainer}>
           <Carousel
             className={landingStyles.landingCarouselMainContainer}

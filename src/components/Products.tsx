@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import productStyles from "../styles/Products.module.css";
 import { useProducts } from "@/context/ProductsContext";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const pathname = usePathname();
@@ -17,6 +18,24 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const sortedProducts = [...productValue].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
+
+  useEffect(() => {
+    const handleVoicesChanged = () => {
+      console.log("Available voices:", window.speechSynthesis.getVoices());
+    };
+
+    window.speechSynthesis.addEventListener(
+      "voiceschanged",
+      handleVoicesChanged
+    );
+
+    return () => {
+      window.speechSynthesis.removeEventListener(
+        "voiceschanged",
+        handleVoicesChanged
+      );
+    };
+  }, []);
 
   // Calculate Veg and Non-Veg counts
   const vegCount = sortedProducts.filter((item) => item.is_veg === 0).length;
@@ -79,8 +98,33 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
       </div>
     );
   };
-
   const renderLandingView = () => {
+    const speakDescription = (description: string) => {
+      const utterance = new SpeechSynthesisUtterance(description);
+      utterance.lang = "en-US";
+    
+      // Stop any ongoing speech
+      window.speechSynthesis.cancel();
+    
+      // Get all available voices
+      const voices = window.speechSynthesis.getVoices();
+    
+      // Select a sweet female voice
+      const sweetFemaleVoice = voices.find(
+        (voice) =>
+          voice.lang === "en-US" &&
+          (voice.name.includes("Female") || voice.name.includes("Samantha"))
+      );
+    
+      // If a suitable voice is found, set it
+      if (sweetFemaleVoice) {
+        utterance.voice = sweetFemaleVoice;
+      }
+    
+      // Speak the description
+      window.speechSynthesis.speak(utterance);
+    };
+
     return (
       sortedProducts.length !== 0 && (
         <div
@@ -153,6 +197,12 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                   <div
                     className={productStyles.productsLandingCardContainerTwo}
                   >
+                    <button
+                      className={productStyles.speakButton}
+                      onClick={() => speakDescription(item.description)}
+                    >
+                      <VolumeUpIcon />
+                    </button>
                     <h3
                       className={`quicksand-text ${productStyles.productsLandingDesc}`}
                     >
@@ -167,7 +217,6 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
       )
     );
   };
-
   return <>{pathname === "/" ? renderLandingView() : renderAdminView()}</>;
 };
 

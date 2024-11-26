@@ -21,7 +21,7 @@ const Landing = () => {
     productsList,
     categoryList,
     // isProductDescriptionChecked,
-    setIsProductDescriptionChecked,
+    // setIsProductDescriptionChecked,
   } = useProducts();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -95,9 +95,9 @@ const Landing = () => {
     setFilterType((prevState) => (prevState === "nonVeg" ? "all" : "nonVeg"));
   };
 
-  const handleCheckboxChange = () => {
-    setIsProductDescriptionChecked((prevState: boolean) => !prevState);
-  };
+  // const handleCheckboxChange = () => {
+  //   setIsProductDescriptionChecked((prevState: boolean) => !prevState);
+  // };
 
   const handleClearBtnClick = () => {
     setSearchQuery("");

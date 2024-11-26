@@ -68,11 +68,12 @@ export default function MenuComponent() {
             backgroundColor: "black",
             color: "white",
             overflow: "visible",
+            borderRadius: "20px",
             // Remove the blur or shadow effect for better clarity on mobile
             filter: "none",
             mt: -1.5,
             width: 200, // Set width of the menu
-            maxHeight: 300, // Set maxHeight to allow scrolling
+            maxHeight: 200, // Set maxHeight to allow scrolling
             overflowY: "auto", // Enable vertical scrolling
             display: "flex",
             flexDirection: "column", // Ensure items are stacked vertically

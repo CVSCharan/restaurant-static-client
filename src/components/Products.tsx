@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import productStyles from "../styles/Products.module.css";
-import { useProducts } from "@/context/ProductsContext";
+// import { useProducts } from "@/context/ProductsContext";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const pathname = usePathname();
-  const { isProductDescriptionChecked, setIsProductDescriptionChecked } =
-    useProducts();
+  // const { isProductDescriptionChecked, setIsProductDescriptionChecked } =
+  //   useProducts();
   const [visibleDescIndex, setVisibleDescIndex] = useState<number | null>(null);
 
   useEffect(() => {

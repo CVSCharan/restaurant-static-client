@@ -108,7 +108,11 @@ export default function MenuComponent() {
             >
               <a
                 href={`#${item}`}
-                style={{ color: "white", textDecoration: "none" }}
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  fontFamily: `"Josefin Sans", sans-serif`,
+                }}
               >
                 {item}
               </a>

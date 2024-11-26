@@ -200,7 +200,7 @@
   align-items: center;
   gap: 25px;
   height: 100%;
-  width: 40%;
+  width: 100%;
 }
 
 .landingFiltersSwitchSubContainer {
@@ -308,11 +308,11 @@
   }
 
   .landingFiltersCheckBoxContainer {
-    width: 50%;
+    width: 100%;
   }
 
   .landingFiltersSwitchContainer {
-    width: 50%;
+    width: 100%;
   }
 
   .landingFiltersCheckBoxHeading {
@@ -407,7 +407,7 @@
   }
 
   .landingFiltersSwitchContainer {
-    width: 50%;
+    width: 100%;
   }
 
   .landingFiltersCheckBoxHeading {
@@ -502,7 +502,7 @@
   }
 
   .landingFiltersSwitchContainer {
-    width: 50%;
+    width: 100%;
   }
 
   .landingFiltersCheckBoxHeading {
@@ -597,7 +597,7 @@
   }
 
   .landingFiltersSwitchContainer {
-    width: 50%;
+    width: 100%;
   }
 
   .landingFiltersCheckBoxHeading {

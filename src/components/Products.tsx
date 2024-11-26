@@ -1,15 +1,19 @@
 "use client";
 import { ProductsProps } from "@/utils/types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import productStyles from "../styles/Products.module.css";
 import { useProducts } from "@/context/ProductsContext";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const pathname = usePathname();
-  const { isProductDescriptionChecked } = useProducts();
+  const { isProductDescriptionChecked, setIsProductDescriptionChecked } =
+    useProducts();
+  const [visibleDescIndex, setVisibleDescIndex] = useState<number | null>(null);
 
   useEffect(() => {
     console.log("Route Name:", pathname);
@@ -98,29 +102,30 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
       </div>
     );
   };
+
   const renderLandingView = () => {
     const speakDescription = (description: string) => {
       const utterance = new SpeechSynthesisUtterance(description);
       utterance.lang = "en-US";
-    
+
       // Stop any ongoing speech
       window.speechSynthesis.cancel();
-    
+
       // Get all available voices
       const voices = window.speechSynthesis.getVoices();
-    
+
       // Select a sweet female voice
       const sweetFemaleVoice = voices.find(
         (voice) =>
           voice.lang === "en-US" &&
           (voice.name.includes("Female") || voice.name.includes("Samantha"))
       );
-    
+
       // If a suitable voice is found, set it
       if (sweetFemaleVoice) {
         utterance.voice = sweetFemaleVoice;
       }
-    
+
       // Speak the description
       window.speechSynthesis.speak(utterance);
     };
@@ -151,7 +156,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
             {sortedProducts.map((item, index) => (
               <li
                 className={
-                  isProductDescriptionChecked
+                  visibleDescIndex === index
                     ? productStyles.productsLandingCardDesc
                     : productStyles.productsLandingCard
                 }
@@ -159,7 +164,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
               >
                 <div
                   className={
-                    isProductDescriptionChecked
+                    visibleDescIndex === index
                       ? productStyles.productsLandingCardContainerOneDesc
                       : productStyles.productsLandingCardContainerOne
                   }
@@ -191,9 +196,24 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                     >
                       {item.is_veg == 0 ? "🌱 Veg" : "🍗 Non-Veg"}
                     </span>
+                    <button
+                      onClick={() =>
+                        setVisibleDescIndex(
+                          visibleDescIndex === index ? null : index
+                        )
+                      }
+                      className={`quicksand-text ${productStyles.productsLandingShowDesc}`}
+                    >
+                      Description{" "}
+                      {visibleDescIndex === index ? (
+                        <KeyboardArrowUpIcon />
+                      ) : (
+                        <KeyboardArrowDownIcon />
+                      )}
+                    </button>
                   </div>
                 </div>
-                {isProductDescriptionChecked && (
+                {visibleDescIndex === index && (
                   <div
                     className={productStyles.productsLandingCardContainerTwo}
                   >

@@ -11,7 +11,7 @@ import Image from "next/image";
 import { Product } from "@/utils/types";
 import Link from "next/link";
 import VegNonVegSwitch from "./CustomSwitch";
-import CustomizedCheckbox from "./CustomCheckBox";
+// import CustomizedCheckbox from "./CustomCheckBox";
 import Footer from "./Footer";
 import { Divider } from "@mui/material";
 import Fuse from "fuse.js";
@@ -20,7 +20,7 @@ const Landing = () => {
   const {
     productsList,
     categoryList,
-    isProductDescriptionChecked,
+    // isProductDescriptionChecked,
     setIsProductDescriptionChecked,
   } = useProducts();
 
@@ -212,7 +212,7 @@ const Landing = () => {
 
         <div className={landingStyles.landingFiltersContainer}>
           <div className={landingStyles.landingFiltersSubContainer}>
-            <div className={landingStyles.landingFiltersCheckBoxContainer}>
+            {/* <div className={landingStyles.landingFiltersCheckBoxContainer}>
               <CustomizedCheckbox
                 checked={isProductDescriptionChecked}
                 onChange={handleCheckboxChange}
@@ -224,7 +224,7 @@ const Landing = () => {
               >
                 Product Description
               </label>
-            </div>
+            </div> */}
             <div className={landingStyles.landingFiltersSwitchContainer}>
               <div className={landingStyles.landingFiltersSwitchSubContainer}>
                 <VegNonVegSwitch

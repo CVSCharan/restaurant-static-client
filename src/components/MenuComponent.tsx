@@ -61,77 +61,68 @@ export default function MenuComponent() {
         id="restaurant-menu"
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
             backgroundColor: "black",
             color: "white",
-            overflow: "visible",
             borderRadius: "20px",
-            // Remove the blur or shadow effect for better clarity on mobile
-            filter: "none",
             mt: -1.5,
-            width: 200, // Set width of the menu
-            maxHeight: 200, // Set maxHeight to allow scrolling
-            overflowY: "auto", // Enable vertical scrolling
-            display: "flex",
-            flexDirection: "column", // Ensure items are stacked vertically
-            "& .MuiMenuItem-root": {
-              width: "100%", // Make each MenuItem take up full width
-              display: "flex",
-              justifyContent: "center", // Center the text inside each menu item
-              textAlign: "center",
-            },
-            "&::before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              bottom: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "black",
-              transform: "translateY(50%) rotate(45deg)",
-              zIndex: 0,
-            },
+            width: 200,
+            maxHeight: 250,
+            overflow: "hidden",
+            padding: "10px 0", // Padding at top and bottom
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "bottom" }}
         anchorOrigin={{ horizontal: "right", vertical: "top" }}
       >
-        {categoryList.map((item, index) => (
-          <React.Fragment key={index}>
-            <MenuItem
-              onClick={handleClose}
-              sx={{ color: "white", textAlign: "center" }}
-            >
-              <a
-                href={`#${item}`}
-                style={{
+        <div
+          style={{
+            maxHeight: 200,
+            overflowY: "scroll",
+          }}
+          className="menu-scroll"
+        >
+          {categoryList.map((item, index) => (
+            <React.Fragment key={index}>
+              <MenuItem
+                onClick={handleClose}
+                sx={{
                   color: "white",
-                  textDecoration: "none",
-                  fontFamily: `"Josefin Sans", sans-serif`,
+                  display: "flex", // Ensures flexbox for alignment
+                  justifyContent: "center", // Vertically centers the content
+                  alignItems: "center",
+                  margin: "5px 0", // Gap between items
+                  padding: "5px 16px", // Adjust padding for consistent layout
+                  textAlign: "left", // Align text to the left
+                  width: "100%", // Ensure full-width clickable area
                 }}
               >
-                {item}
-              </a>
-            </MenuItem>
-          </React.Fragment>
-        ))}
+                <a
+                  href={`#${item}`}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    fontFamily: `"Josefin Sans", sans-serif`,
+                    width: "100%", // Make the anchor take up full width
+                  }}
+                >
+                  {item}
+                </a>
+              </MenuItem>
+            </React.Fragment>
+          ))}
+        </div>
       </Menu>
 
-      {/* Add Media Query for Mobile View */}
+      {/* Scoped styles for hiding scrollbar */}
       <style jsx>{`
-        @media (max-width: 600px) {
-          .MuiMenu-root {
-            width: 100% !important; /* Make the menu width take up the full screen on mobile */
-            max-height: 80vh; /* Limit the height of the menu on mobile */
-          }
-          .MuiMenuItem-root {
-            padding: 10px 15px; /* Adjust padding for better readability */
-            font-size: 16px; /* Increase font size for better readability on mobile */
-          }
+        .menu-scroll {
+          scrollbar-width: none; /* Hide scrollbar on Firefox */
+        }
+        .menu-scroll::-webkit-scrollbar {
+          display: none; /* Hide scrollbar on Chrome, Safari, Edge */
         }
       `}</style>
     </>

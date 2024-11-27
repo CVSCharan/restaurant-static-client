@@ -72,6 +72,7 @@ export default function MenuComponent() {
             maxHeight: 250,
             overflow: "hidden",
             padding: "10px 0", // Padding at top and bottom
+            border: "2px solid #295f98",
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "bottom" }}

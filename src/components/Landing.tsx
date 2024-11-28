@@ -16,6 +16,7 @@ import Footer from "./Footer";
 import { Divider } from "@mui/material";
 import Fuse from "fuse.js";
 import MenuComponent from "./MenuComponent";
+import LoaderModal from "./LoaderModal";
 
 const Landing = () => {
   const {
@@ -32,6 +33,9 @@ const Landing = () => {
 
   // Single state for filter type: "all", "veg", or "nonVeg"
   const [filterType, setFilterType] = useState<"all" | "veg" | "nonVeg">("all");
+  const [loaderOpen, setLoaderOpen] = React.useState(false);
+  const handleLoaderOpen = () => setLoaderOpen(true);
+  const handleLoaderClose = () => setLoaderOpen(false);
 
   // Check if we are on the client side
   useEffect(() => {
@@ -41,7 +45,12 @@ const Landing = () => {
   // Initialize products list when available
   useEffect(() => {
     if (isClient && productsList) {
-      setLandingSearchedProductsList(productsList);
+      if (productsList.length === 0) {
+        handleLoaderOpen(); // Show the loader if productsList is empty
+      } else {
+        handleLoaderClose(); // Hide the loader when productsList is not empty
+        setLandingSearchedProductsList(productsList);
+      }
     }
   }, [isClient, productsList]);
 
@@ -59,7 +68,7 @@ const Landing = () => {
     if (searchQuery.trim() !== "") {
       const fuse = new Fuse(filteredList, {
         keys: ["name", "category"], // Search in both 'name' and 'category'
-        threshold: 0.4, // Tolerance for fuzzy matching
+        threshold: 0.3, // Tolerance for fuzzy matching
       });
 
       const searchResults = fuse
@@ -126,6 +135,7 @@ const Landing = () => {
 
   return (
     <section id="Landing" className={landingStyles.landingMainContainer}>
+      <LoaderModal handleClose={handleLoaderClose} open={loaderOpen} />
       <div style={{ flex: 1 }}>
         <MenuComponent />
         {/* <ScrollToTop /> */}

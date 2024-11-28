@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import productStyles from "../styles/Products.module.css";
 // import { useProducts } from "@/context/ProductsContext";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const Products: React.FC<ProductsProps> = ({ productValue }) => {
   const pathname = usePathname();
@@ -107,6 +107,9 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
     const speakDescription = (description: string) => {
       const utterance = new SpeechSynthesisUtterance(description);
       utterance.lang = "en-US";
+
+      // Slow down the voice rate for better clarity
+      utterance.rate = 0.85; // Adjust this value for desired pace (default is 1)
 
       // Stop any ongoing speech
       window.speechSynthesis.cancel();
@@ -219,6 +222,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                   >
                     <button
                       className={productStyles.speakButton}
+                      style={{ cursor: "pointer" }}
                       onClick={() => speakDescription(item.description)}
                     >
                       <VolumeUpIcon />

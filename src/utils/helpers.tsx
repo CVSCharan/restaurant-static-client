@@ -1,5 +1,4 @@
 import { Product } from "./types";
-import { useAuth } from "@/context/AuthContext";
 
 export function removeDuplicates(arr: string[]) {
   return arr.filter((item, index) => arr.indexOf(item) === index);

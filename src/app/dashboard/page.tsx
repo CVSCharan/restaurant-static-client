@@ -5,11 +5,10 @@ import { useAuth } from "@/context/AuthContext";
 import { RestaurantUser } from "@/utils/types";
 import { checkLoginExpiery } from "@/utils/helpers";
 import dashboardStyles from "./page.module.css";
-import LoggedOutModal from "@/components/LoggedOutModal";
 import Image from "next/image";
 import Link from "next/link";
 import { useProducts } from "@/context/ProductsContext";
-import { useRouter } from "next/router";
+
 
 const Dashboard = () => {
   const { logout, showModal } = useAuth();

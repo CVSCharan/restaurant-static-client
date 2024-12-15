@@ -9,10 +9,16 @@ interface LoaderModalProps {
 }
 
 export default function LoaderModal({ open, handleClose }: LoaderModalProps) {
+  const handleModalClose = () => {
+    if (!open) {
+      handleClose();
+    }
+  };
+
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={handleModalClose} // Custom close handler
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       className={loaderModalStyles.mainContainer}

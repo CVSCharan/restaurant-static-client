@@ -7,6 +7,7 @@ export interface Product {
   is_veg: number;
   image_url: string;
   created_at: string;
+  isActive: number;
 }
 
 export type ProductsProps = {
@@ -23,4 +24,5 @@ export interface RestaurantUser {
   email: string;
   role: string;
   token?: string;
+  loggedInAt: string;
 }

@@ -43,13 +43,15 @@ const LogInPage: React.FC = () => {
         if (response.status === 200) {
           console.log("Login successful:", response.data);
 
-          const { token, id, username, role, email } = response.data;
+          const { token, id, username, role, email, loggedInAt } =
+            response.data;
           const tempUser: RestaurantUser = {
             id,
             name: username,
             email,
             role,
             token,
+            loggedInAt,
           };
           // Store the token in localStorage (or cookie)
           localStorage.setItem("restaurant-app-user", JSON.stringify(tempUser));

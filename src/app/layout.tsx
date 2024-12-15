@@ -16,13 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <MenuProvider>
-          <ProductsProvider>
-            <body>{children}</body>
-          </ProductsProvider>
-        </MenuProvider>
-      </AuthProvider>
+      <body>
+        <AuthProvider>
+          <MenuProvider>
+            <ProductsProvider>{children}</ProductsProvider>
+          </MenuProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

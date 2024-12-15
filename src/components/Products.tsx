@@ -107,29 +107,21 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
     const speakDescription = (description: string) => {
       const utterance = new SpeechSynthesisUtterance(description);
       utterance.lang = "en-US";
+      utterance.rate = 0.85; // Slow down the voice rate for better clarity
 
-      // Slow down the voice rate for better clarity
-      utterance.rate = 0.85; // Adjust this value for desired pace (default is 1)
-
-      // Stop any ongoing speech
       window.speechSynthesis.cancel();
-
-      // Get all available voices
       const voices = window.speechSynthesis.getVoices();
 
-      // Select a sweet female voice
       const sweetFemaleVoice = voices.find(
         (voice) =>
           voice.lang === "en-US" &&
           (voice.name.includes("Female") || voice.name.includes("Samantha"))
       );
 
-      // If a suitable voice is found, set it
       if (sweetFemaleVoice) {
         utterance.voice = sweetFemaleVoice;
       }
 
-      // Speak the description
       window.speechSynthesis.speak(utterance);
     };
 
@@ -164,6 +156,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                     : productStyles.productsLandingCard
                 }
                 key={index}
+                style={{ opacity: item.isActive === 0 ? 0.2 : 1 }} // Apply opacity for disabled view
               >
                 <div
                   className={
@@ -197,26 +190,34 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
                     <span
                       className={`quicksand-text ${productStyles.isVegImgLanding}`}
                     >
-                      {item.is_veg == 0 ? "🌱 Veg" : "🍗 Non-Veg"}
+                      {item.is_veg === 0 ? "🌱 Veg" : "🍗 Non-Veg"}
                     </span>
-                    <button
-                      onClick={() =>
-                        setVisibleDescIndex(
-                          visibleDescIndex === index ? null : index
-                        )
-                      }
-                      className={`quicksand-text ${productStyles.productsLandingShowDesc}`}
-                    >
-                      Description{" "}
-                      {visibleDescIndex === index ? (
-                        <KeyboardArrowUpIcon />
-                      ) : (
-                        <KeyboardArrowDownIcon />
-                      )}
-                    </button>
+                    {item.isActive === 1 ? (
+                      <button
+                        onClick={() =>
+                          setVisibleDescIndex(
+                            visibleDescIndex === index ? null : index
+                          )
+                        }
+                        className={`quicksand-text ${productStyles.productsLandingShowDesc}`}
+                      >
+                        Description
+                        {visibleDescIndex === index ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </button>
+                    ) : (
+                      <h2
+                        className={`quicksand-text ${productStyles.productsLandingTitle}`}
+                      >
+                        Currently Not Available
+                      </h2>
+                    )}
                   </div>
                 </div>
-                {visibleDescIndex === index && (
+                {visibleDescIndex === index && item.isActive !== 0 && (
                   <div
                     className={productStyles.productsLandingCardContainerTwo}
                   >
@@ -241,6 +242,7 @@ const Products: React.FC<ProductsProps> = ({ productValue }) => {
       )
     );
   };
+
   return <>{pathname === "/" ? renderLandingView() : renderAdminView()}</>;
 };
 

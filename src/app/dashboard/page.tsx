@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { RestaurantUser } from "@/utils/types";
@@ -9,9 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useProducts } from "@/context/ProductsContext";
 
-
 const Dashboard = () => {
-  const { logout, showModal } = useAuth();
+  const { logout } = useAuth();
 
   const [userDetails, setUserDetails] = useState<RestaurantUser | null>(null);
   const { productsList } = useProducts();
@@ -24,6 +22,7 @@ const Dashboard = () => {
   const [isClient, setIsClient] = useState(false); // Track if the app is running on the client
   useEffect(() => {
     // Only run this code on the client side
+    console.log(isClient);
     setIsClient(true);
   }, []);
 

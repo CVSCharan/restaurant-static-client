@@ -1,312 +1,520 @@
+/* ======================================================
+   Restaurant Footer Styles
+   ====================================================== */
+
 .footerMainContainer {
-  height: 90%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1280px;
+  background: linear-gradient(to bottom, #1e1a2b, #0b0c10);
+  color: #f8f5f0;
+  padding: 60px 20px 30px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
 }
 
+.footerDecorativeElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #d4af37, #8a5a44, #d4af37);
+}
+
+/* Footer Sections
+   ====================================================== */
 .footerContainerOne {
-  height: 100%;
-  width: 50%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto 40px;
+  gap: 40px;
+  padding: 0 15px;
 }
 
-.footerContainerTwo {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-}
-
-.footerContainerOneSubOne {
-  height: 60%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 25px;
-}
-
+.footerContainerOneSubOne,
 .footerContainerOneSubTwo {
-  height: 40%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 20px;
+  flex: 1;
+  min-width: 300px;
+  padding: 25px;
+  background: rgba(30, 26, 43, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.footerAddressHeading {
-  font-size: 22px;
+.footerContainerOneSubOne:hover,
+.footerContainerOneSubTwo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Hours Section
+   ====================================================== */
+.footerHoursContainer {
+  margin-bottom: 25px;
+}
+
+.footerHoursItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+}
+
+.footerHoursDay {
+  font-weight: 500;
+  color: #d4af37;
+  font-size: 16px;
+}
+
+.footerHoursTime {
+  color: rgba(248, 245, 240, 0.9);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Media Queries
+   ====================================================== */
+@media only screen and (max-width: 1024px) {
+  .footerContainerOne {
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .footerContainerOneSubOne,
+  .footerContainerOneSubTwo {
+    min-width: 280px;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .footerContainerOne {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footerContainerOneSubOne,
+  .footerContainerOneSubTwo {
+    min-width: 320px;
+    max-width: 450px;
+    width: calc(50% - 20px);
+  }
+
+  .footerContainerTwo {
+    width: 90%;
+    max-width: 700px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footerMainContainer {
+    padding: 50px 15px 30px;
+  }
+
+  .footerContainerOne {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .footerContainerOneSubOne,
+  .footerContainerOneSubTwo {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .footerAddressHeading,
+  .footerOpenHoursHeading,
+  .footerContactUsHeading {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .footerDivider {
+    margin: 15px auto 25px;
+  }
+
+  .footerAddressTitle {
+    text-align: center;
+  }
+
+  .footerAddress {
+    text-align: center;
+  }
+
+  .footerContactInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerHoursItem {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 0 10px 10px;
+  }
+
+  .contactUsSubmitBtn {
+    align-self: center;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .footerMainContainer {
+    padding: 40px 10px 20px;
+  }
+
+  .footerAddressHeading,
+  .footerOpenHoursHeading,
+  .footerContactUsHeading {
+    font-size: 22px;
+  }
+
+  .footerContainerTwo {
+    padding: 20px 15px;
+  }
+
+  .contactUsInput,
+  .contactUsTextarea {
+    padding: 10px;
+  }
+
+  .footerSocialLinks {
+    justify-content: center;
+  }
+
+  .footerHoursItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+  }
+
+  .footerHoursDay,
+  .footerHoursTime {
+    font-size: 15px;
+  }
+
+  .footerAddress {
+    font-size: 15px;
+  }
+
+  .footerContactText {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .footerContainerOneSubOne,
+  .footerContainerOneSubTwo {
+    padding: 15px;
+  }
+
+  .footerAddressHeading,
+  .footerOpenHoursHeading,
+  .footerContactUsHeading {
+    font-size: 20px;
+  }
+
+  .footerHoursDay,
+  .footerHoursTime,
+  .footerAddress,
+  .footerContactText {
+    font-size: 14px;
+  }
+
+  .contactUsFormLabel {
+    font-size: 14px;
+  }
+
+  .contactUsInput,
+  .contactUsTextarea,
+  .contactUsSubmitBtn {
+    font-size: 14px;
+  }
+}
+
+.footerDivider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #d4af37, #8a5a44);
+  margin: 15px 0 25px;
+  border-radius: 2px;
+}
+
+/* Address Section
+   ====================================================== */
+.footerAddressHeading,
+.footerOpenHoursHeading,
+.footerContactUsHeading {
+  font-size: 28px;
+  color: #d4af37;
+  margin-bottom: 10px;
+  letter-spacing: 1.5px;
 }
 
 .footerAddressTitle {
   font-size: 18px;
-  margin-top: 30px;
+  color: #d4af37;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .footerAddress {
   font-size: 16px;
-  margin: 7px 0;
+  margin-bottom: 8px;
+  color: rgba(248, 245, 240, 0.9);
+  line-height: 1.5;
 }
 
-.footerOpenHoursHeading {
-  font-size: 22px;
+.footerContactInfo {
+  margin-top: 25px;
 }
 
-.footerOpenHours {
+.footerContactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.footerContactIcon {
+  margin-right: 12px;
   font-size: 18px;
-  margin: 20px 0;
+  color: #d4af37;
 }
 
-.footerContactUsHeading {
-  font-size: 22px;
+.footerContactText {
+  font-size: 16px;
+  color: rgba(248, 245, 240, 0.9);
+}
+
+/* Hours Section
+   ====================================================== */
+.footerHoursContainer {
+  margin-bottom: 25px;
+}
+
+.footerHoursItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+}
+
+.footerHoursDay {
+  font-weight: 500;
+  color: #d4af37;
+}
+
+.footerHoursTime {
+  color: rgba(248, 245, 240, 0.9);
+}
+
+.footerSocialLinks {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.footerSocialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.footerSocialIcon:hover {
+  background-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Contact Form
+   ====================================================== */
+.footerContainerTwo {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  background: rgba(30, 26, 43, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .contactUsFormContainer {
-  height: 90%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 20px;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .contactUsFormContainerSub {
-  height: 23%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 7px 0;
+  gap: 8px;
 }
 
 .contactUsFormLabel {
-  font-size: 15px;
+  font-size: 16px;
+  color: #d4af37;
+  font-weight: 500;
 }
 
-.contactUsInput {
-  width: 100%;
-  height: 50%;
-  background-color: transparent;
-  border: 1px solid;
-  border-radius: 20px;
-  padding: 0 20px;
+.contactUsInput,
+.contactUsTextarea {
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background-color: rgba(248, 245, 240, 0.05);
+  color: #f8f5f0;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
-.contactUsSubmitBtm {
-  align-self: center;
-  height: 35px;
-  width: 120px;
-  margin: 10px 0;
-  background-color: black;
-  border: 1px solid;
-  border-radius: 10px;
+.contactUsInput:focus,
+.contactUsTextarea:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.contactUsInput::placeholder,
+.contactUsTextarea::placeholder {
+  color: rgba(248, 245, 240, 0.5);
+}
+
+.contactUsTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contactUsSubmitBtn {
+  align-self: flex-start;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #d4af37, #8a5a44);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Extra Small Mobile Devices (Portrait) */
-/* iPhone SE, older Android phones */
-@media only screen and (max-width: 320px) {
-  .footerMainContainer {
-    flex-direction: column;
-  }
+.contactUsSubmitBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #e5c158, #9b6b54);
+}
 
-  .footerContainerOne {
-    flex-direction: column;
-    width: 100%;
-    height: 45%;
-  }
+.formSubmissionMessage {
+  padding: 12px 20px;
+  background-color: rgba(212, 175, 55, 0.2);
+  border-left: 4px solid #d4af37;
+  color: #f8f5f0;
+  border-radius: 4px;
+  margin-top: 15px;
+  animation: fadeIn 0.5s ease;
+}
 
-  .footerContainerTwo {
-    width: 100%;
-    height: 55%;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-
-  .contactUsFormLabel {
-    font-size: 13px;
-  }
-
-  .footerAddressHeading {
-    font-size: 16px;
-  }
-
-  .footerAddressTitle {
-    font-size: 14px;
-  }
-
-  .footerAddress {
-    font-size: 13px;
-  }
-
-  .footerOpenHoursHeading {
-    font-size: 16px;
-  }
-
-  .footerOpenHours {
-    font-size: 14px;
-    margin: 20px 0;
-  }
-
-  .footerContactUsHeading {
-    font-size: 16px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Small Mobile Devices (Portrait) */
-/* iPhone 6/7/8, Galaxy S8 */
-@media only screen and (min-width: 321px) and (max-width: 375px) {
-  .footerMainContainer {
-    flex-direction: column;
-  }
+/* Footer Bottom
+   ====================================================== */
+.footerBottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+}
 
+.footerCopyright,
+.footerCredit {
+  font-size: 14px;
+  color: rgba(248, 245, 240, 0.7);
+  margin: 8px 0;
+}
+
+.footerCredit {
+  color: #d4af37;
+}
+
+/* Media Queries
+   ====================================================== */
+@media only screen and (max-width: 768px) {
   .footerContainerOne {
     flex-direction: column;
+    gap: 30px;
+  }
+
+  .footerContainerOneSubOne,
+  .footerContainerOneSubTwo {
     width: 100%;
-    height: 45%;
   }
 
-  .footerContainerTwo {
-    width: 100%;
-    height: 55%;
-  }
-
-  .contactUsFormLabel {
-    font-size: 13px;
-  }
-
-  .footerAddressHeading {
-    font-size: 18px;
-  }
-
-  .footerAddressTitle {
-    font-size: 14px;
-  }
-
-  .footerAddress {
-    font-size: 13px;
-  }
-
-  .footerOpenHoursHeading {
-    font-size: 18px;
-  }
-
-  .footerOpenHours {
-    font-size: 16px;
-    margin: 20px 0;
-  }
-
+  .footerAddressHeading,
+  .footerOpenHoursHeading,
   .footerContactUsHeading {
-    font-size: 18px;
+    font-size: 24px;
+  }
+
+  .footerHoursItem {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contactUsSubmitBtn {
+    align-self: center;
+    width: 100%;
   }
 }
 
-/* Medium Mobile Devices (Portrait) */
-/* iPhone 11 Pro, Google Pixel 2 */
-@media only screen and (min-width: 376px) and (max-width: 425px) {
+@media only screen and (max-width: 480px) {
   .footerMainContainer {
-    flex-direction: column;
+    padding: 40px 15px 20px;
   }
 
-  .footerContainerOne {
-    flex-direction: column;
-    width: 100%;
-    height: 45%;
+  .footerAddressHeading,
+  .footerOpenHoursHeading,
+  .footerContactUsHeading {
+    font-size: 22px;
   }
 
   .footerContainerTwo {
-    width: 100%;
-    height: 55%;
+    padding: 20px 15px;
   }
 
-  .contactUsFormLabel {
-    font-size: 13px;
+  .contactUsInput,
+  .contactUsTextarea {
+    padding: 10px;
   }
 
-  .footerAddressHeading {
-    font-size: 18px;
-  }
-
-  .footerAddressTitle {
-    font-size: 14px;
-  }
-
-  .footerAddress {
-    font-size: 13px;
-  }
-
-  .footerOpenHoursHeading {
-    font-size: 18px;
-  }
-
-  .footerOpenHours {
-    font-size: 16px;
-    margin: 20px 0;
-  }
-
-  .footerContactUsHeading {
-    font-size: 18px;
-  }
-}
-
-/* Large Mobile Devices (Portrait) */
-/* iPhone 11 Pro Max, Galaxy Note */
-@media only screen and (min-width: 426px) and (max-width: 480px) {
-  .footerMainContainer {
-    flex-direction: column;
-  }
-
-  .footerContainerOne {
-    flex-direction: column;
-    width: 100%;
-    height: 45%;
-  }
-
-  .footerContainerTwo {
-    width: 100%;
-    height: 55%;
-  }
-
-  .contactUsFormLabel {
-    font-size: 13px;
-  }
-
-  .footerAddressHeading {
-    font-size: 18px;
-  }
-
-  .footerAddressTitle {
-    font-size: 14px;
-  }
-
-  .footerAddress {
-    font-size: 13px;
-  }
-
-  .footerOpenHoursHeading {
-    font-size: 18px;
-  }
-
-  .footerOpenHours {
-    font-size: 16px;
-    margin: 20px 0;
-  }
-
-  .footerContactUsHeading {
-    font-size: 18px;
+  .footerSocialLinks {
+    justify-content: center;
   }
 }

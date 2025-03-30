@@ -1,60 +1,126 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useProducts } from "@/context/ProductsContext";
 import Products from "./Products";
 import { filterProductsList, resturantStockImages } from "@/utils/helpers";
 import landingStyles from "../styles/Landing.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import ScrollToTop from "./ScrollToTop";
 import Image from "next/image";
 import { Product } from "@/utils/types";
 import Link from "next/link";
 import VegNonVegSwitch from "./CustomSwitch";
-// import CustomizedCheckbox from "./CustomCheckBox";
 import Footer from "./Footer";
 import { Divider } from "@mui/material";
 import Fuse from "fuse.js";
 import MenuComponent from "./MenuComponent";
 import LoaderModal from "./LoaderModal";
 
-const Landing = () => {
-  const {
-    productsList,
-    categoryList,
-    // isProductDescriptionChecked,
-    // setIsProductDescriptionChecked,
-  } = useProducts();
+// ======================================================================
+// Constants and Configurations
+// ======================================================================
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [landingSearchedProductsList, setLandingSearchedProductsList] =
+/**
+ * Responsive configuration for the carousel component
+ */
+const CAROUSEL_RESPONSIVE_CONFIG = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 1601 },
+    items: 4,
+  },
+  desktop: {
+    breakpoint: { max: 1600, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1023, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+/**
+ * Filter type definition for product filtering
+ */
+type FilterType = "all" | "veg" | "nonVeg";
+
+// ======================================================================
+// Main Component
+// ======================================================================
+
+/**
+ * Landing Component - Main page of the restaurant application
+ * 
+ * Displays the restaurant's menu, allows filtering by veg/non-veg,
+ * and provides search functionality for products.
+ */
+const Landing: React.FC = () => {
+  // ======================================================================
+  // Context and State Management
+  // ======================================================================
+  
+  const { productsList, categoryList } = useProducts();
+
+  // UI states
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [landingSearchedProductsList, setLandingSearchedProductsList] = 
     useState<Product[]>([]);
   const [isClient, setIsClient] = useState<boolean>(false);
+  const [filterType, setFilterType] = useState<FilterType>("all");
+  const [loaderOpen, setLoaderOpen] = useState<boolean>(false);
 
-  // Single state for filter type: "all", "veg", or "nonVeg"
-  const [filterType, setFilterType] = useState<"all" | "veg" | "nonVeg">("all");
-  const [loaderOpen, setLoaderOpen] = React.useState(false);
-  const handleLoaderOpen = () => setLoaderOpen(true);
-  const handleLoaderClose = () => setLoaderOpen(false);
+  // ======================================================================
+  // Event Handlers
+  // ======================================================================
+  
+  const handleLoaderOpen = useCallback(() => setLoaderOpen(true), []);
+  const handleLoaderClose = useCallback(() => setLoaderOpen(false), []);
 
-  // Check if we are on the client side
+  const handleVegToggle = useCallback(() => {
+    setFilterType((prevState) => (prevState === "veg" ? "all" : "veg"));
+  }, []);
+
+  const handleNonVegToggle = useCallback(() => {
+    setFilterType((prevState) => (prevState === "nonVeg" ? "all" : "nonVeg"));
+  }, []);
+
+  const handleClearBtnClick = useCallback(() => {
+    setSearchQuery("");
+    setLandingSearchedProductsList(productsList || []);
+  }, [productsList]);
+
+  const handleSearchInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
+  // ======================================================================
+  // Side Effects
+  // ======================================================================
+  
+  // Client-side detection
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   // Initialize products list when available
   useEffect(() => {
-    if (isClient && productsList) {
-      if (productsList.length === 0) {
-        handleLoaderOpen(); // Show the loader if productsList is empty
-      } else {
-        handleLoaderClose(); // Hide the loader when productsList is not empty
-        setLandingSearchedProductsList(productsList);
-      }
+    if (!isClient || !productsList) return;
+    
+    if (productsList.length === 0) {
+      handleLoaderOpen();
+    } else {
+      handleLoaderClose();
+      setLandingSearchedProductsList(productsList);
     }
-  }, [isClient, productsList]);
+  }, [isClient, productsList, handleLoaderOpen, handleLoaderClose]);
 
+  // Filter products based on search query and filter type
   useEffect(() => {
+    if (!productsList) return;
+    
     let filteredList = productsList;
 
     // Apply Veg/Non-Veg filter
@@ -67,8 +133,8 @@ const Landing = () => {
     // Handle search query
     if (searchQuery.trim() !== "") {
       const fuse = new Fuse(filteredList, {
-        keys: ["name", "category"], // Search in both 'name' and 'category'
-        threshold: 0.3, // Tolerance for fuzzy matching
+        keys: ["name", "category"],
+        threshold: 0.3,
       });
 
       const searchResults = fuse
@@ -80,8 +146,8 @@ const Landing = () => {
       } else {
         // No matches found; fallback to similar category with a broader threshold
         const broaderFuse = new Fuse(filteredList, {
-          keys: ["category"], // Search only in 'category' as a last resort
-          threshold: 0.6, // Looser tolerance for broader matches
+          keys: ["category"],
+          threshold: 0.6,
         });
 
         const categoryResults = broaderFuse
@@ -97,54 +163,63 @@ const Landing = () => {
     setLandingSearchedProductsList(filteredList);
   }, [filterType, searchQuery, productsList]);
 
-  const handleVegToggle = () => {
-    setFilterType((prevState) => (prevState === "veg" ? "all" : "veg"));
-  };
+  // ======================================================================
+  // Memoized Components
+  // ======================================================================
+  
+  // Memoized category menu items
+  const categoryMenuItems = useMemo(() => {
+    if (!categoryList || !productsList) return null;
+    
+    return categoryList.map((category) => (
+      <a
+        key={category}
+        className={landingStyles.menuNavItem}
+        href={`#${category}`}
+      >
+        <Image
+          className={landingStyles.menuNavImg}
+          height={100}
+          width={100}
+          src={filterProductsList(productsList, category)[1].image_url}
+          alt={`${category} img`}
+        />
+        <h3 className="playwrite-gb-s-text">{category}</h3>
+      </a>
+    ));
+  }, [categoryList, productsList]);
 
-  const handleNonVegToggle = () => {
-    setFilterType((prevState) => (prevState === "nonVeg" ? "all" : "nonVeg"));
-  };
+  // Memoized product categories
+  const productCategories = useMemo(() => {
+    if (!isClient || !landingSearchedProductsList || !categoryList) return null;
+    
+    return categoryList.map((item: string) => (
+      <Products
+        key={item}
+        productValue={filterProductsList(
+          landingSearchedProductsList,
+          item
+        )}
+      />
+    ));
+  }, [isClient, landingSearchedProductsList, categoryList]);
 
-  // const handleCheckboxChange = () => {
-  //   setIsProductDescriptionChecked((prevState: boolean) => !prevState);
-  // };
-
-  const handleClearBtnClick = () => {
-    setSearchQuery("");
-    setLandingSearchedProductsList(productsList);
-  };
-
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 1601 },
-      items: 4,
-    },
-    desktop: {
-      breakpoint: { max: 1600, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1023, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-
+  // ======================================================================
+  // Render Component
+  // ======================================================================
+  
   return (
     <section id="Landing" className={landingStyles.landingMainContainer}>
       <LoaderModal handleClose={handleLoaderClose} open={loaderOpen} />
       <div style={{ flex: 1 }}>
         <MenuComponent />
-        {/* <ScrollToTop /> */}
+        
+        {/* Banner and Carousel */}
         <div className={landingStyles.landingBannerContainer}>
           <Carousel
             className={landingStyles.landingCarouselMainContainer}
-            responsive={responsive}
+            responsive={CAROUSEL_RESPONSIVE_CONFIG}
             infinite
-            // showDots
             autoPlay
           >
             {resturantStockImages.map((item: string, index: number) => (
@@ -164,6 +239,7 @@ const Landing = () => {
             ))}
           </Carousel>
 
+          {/* Branding */}
           <div className={landingStyles.brandingContainer}>
             <Image
               width={200}
@@ -171,7 +247,7 @@ const Landing = () => {
               className={landingStyles.landingLogo}
               alt="ss-logo"
               src="https://raw.githubusercontent.com/CVSCharan/resturant-app-assets/refs/heads/main/restaurant-logo-img.png"
-              priority // Use priority to load the image eagerly
+              priority
             />
 
             <Link
@@ -183,23 +259,9 @@ const Landing = () => {
           </div>
         </div>
 
+        {/* Menu Navigation */}
         <div id="MenuNav" className={landingStyles.menuNavContainer}>
-          {categoryList.map((category) => (
-            <a
-              key={category}
-              className={landingStyles.menuNavItem}
-              href={`#${category}`}
-            >
-              <Image
-                className={landingStyles.menuNavImg}
-                height={100}
-                width={100}
-                src={filterProductsList(productsList, category)[1].image_url}
-                alt={`${category} img`}
-              />
-              <h3 className="playwrite-gb-s-text">{category}</h3>
-            </a>
-          ))}
+          {categoryMenuItems}
         </div>
 
         {/* Search Bar */}
@@ -210,7 +272,7 @@ const Landing = () => {
               className={`quicksand-text ${landingStyles.searchInput}`}
               placeholder="Paneer 65, Chicken Dum Biryani, ...more"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchInputChange}
             />
 
             <button
@@ -222,21 +284,9 @@ const Landing = () => {
           </div>
         </div>
 
+        {/* Filters */}
         <div className={landingStyles.landingFiltersContainer}>
           <div className={landingStyles.landingFiltersSubContainer}>
-            {/* <div className={landingStyles.landingFiltersCheckBoxContainer}>
-              <CustomizedCheckbox
-                checked={isProductDescriptionChecked}
-                onChange={handleCheckboxChange}
-                inputProps={{ "aria-label": "Product Description Checkbox" }}
-              />
-              <label
-                className={`playwrite-gb-s-text ${landingStyles.landingFiltersCheckBoxHeading}`}
-                htmlFor="product-description-checkbox"
-              >
-                Product Description
-              </label>
-            </div> */}
             <div className={landingStyles.landingFiltersSwitchContainer}>
               <div className={landingStyles.landingFiltersSwitchSubContainer}>
                 <VegNonVegSwitch
@@ -270,19 +320,10 @@ const Landing = () => {
 
         {/* Filtered Products Display */}
         <div className={landingStyles.landingProductsContainer}>
-          {isClient &&
-            landingSearchedProductsList &&
-            categoryList.map((item: string) => (
-              <Products
-                key={item}
-                productValue={filterProductsList(
-                  landingSearchedProductsList,
-                  item
-                )}
-              />
-            ))}
+          {productCategories}
         </div>
 
+        {/* Footer */}
         <section className={landingStyles.footerContainer}>
           <Footer />
           <Divider className={landingStyles.customDivider} />

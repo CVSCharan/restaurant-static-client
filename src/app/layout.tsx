@@ -5,8 +5,9 @@ import { ProductsProvider } from "@/context/ProductsContext";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
-  title: "Restaurant Application",
-  description: "Restaurant application v1 - Created by CVS CHARAN",
+  title: "Restaurant App Template",
+  description:
+    "Restaurant application full-stack template v1 - Created by CVS CHARAN",
 };
 
 export default function RootLayout({
